@@ -1,0 +1,9 @@
+kubectl get deploy -n tutorial
+kubectl get deploy -n tutorial skccuser03-pay -o yaml
+kubectl get deploy -n tutorial skccuser03-pay -o yaml > paydeployment.yaml
+kubectl apply -f <(istioctl kube-inject -f paydeployment.yaml) -n tutorial
+
+
+
+예시
+kubectl apply -f <(istioctl kube-inject -f customer/kubernetes/Deployment.yml) -n tutorial
