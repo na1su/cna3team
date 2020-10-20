@@ -1,0 +1,33 @@
+git clone https://github.com/redhat-developer-demos/istio-tutorial
+  173  ls
+  174  cd istio-tutorial/
+  175  kubectl create namespace tutorial
+  176  clear
+  177  kubectl get ns
+  178  kubectl apply -f <(istioctl kube-inject -f customer/kubernetes/Deployment.yml) -n tutorial
+  179  kubectl create -f customer/kubernetes/Service.yml -n tutorial
+  180  kubectl create -f customer/kubernetes/Gateway.yml -n tutorial
+  181  clear
+  182  kubectl get svc -n istio-system
+  183  kubectl label namespace tutorial istio-injection=enabled --overwrite
+  184  clear
+  185  kubectl create deploy order --image=052937454741.dkr.ecr.ca-central-1.amazonaws.com/admin24-cna-order:v1 -n tutorial
+  186  kubectl get all -n tutorial
+  187  kubectl expose deploy order --port=8080 -n tutorial
+  188  clear
+  189  kubectl get all -n tutorial
+  190  kubectl describe pod/order-768f766b4-6mbzr -n tutorial
+  191  kubectl get all -n tutorial
+  192  kubectl logs -f pod/order-768f766b4-6mbzr -c admin06-cna-order -n tutorial
+  193  clear
+  194  kubectl get all -n tutorial
+  195  clear
+  196  kubectl create deploy delivery --image=052937454741.dkr.ecr.ca-central-1.amazonaws.com/admin24-cna-delivery:v1 -n tutorial
+  197  kubectl expose deploy delivery --port=8080 -n tutorial
+  198  kubectl get all -n tutorial
+  199  kubectl create deploy customercenter --image=052937454741.dkr.ecr.ca-central-1.amazonaws.com/admin24-cna-customer:v1 -n tutorial
+  200  kubectl expose deploy customercenter --port=8080 -n tutorial
+  201  kubectl create deploy gateway --image=052937454741.dkr.ecr.ca-central-1.amazonaws.com/admin24-cna-gateway:v1 -n tutorial
+  202  kubectl expose deploy gateway --type=LoadBalancer --port=8080 -n tutorial
+  203  kubectl get all -n tutorial
+  204  history
