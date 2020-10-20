@@ -5,5 +5,23 @@ kubectl apply -f <(istioctl kube-inject -f paydeployment.yaml) -n tutorial
 
 
 
+kubectl get deploy -n tutorial
+kubectl get deploy -n tutorial skccuser03-pay -o yaml
+kubectl get deploy -n tutorial skccuser03-pay -o yaml > paydeployment.yaml
+kubectl apply -f <(istioctl kube-inject -f paydeployment.yaml) -n tutorial
+
+kubectl get deploy -n tutorial pay -o yaml > Paydeployment.yaml
+kubectl get deploy -n tutorial point -o yaml > Pointdeployment.yaml
+kubectl get deploy -n tutorial checkin -o yaml > Checkindeployment.yaml
+kubectl get deploy -n tutorial customercenter -o yaml > Customercenterdeployment.yaml
+kubectl get deploy -n tutorial gateway -o yaml > Gatewaydeployment.yaml
+
+
 예시
 kubectl apply -f <(istioctl kube-inject -f customer/kubernetes/Deployment.yml) -n tutorial
+
+kubectl apply -f <(istioctl kube-inject -f Paydeployment.yml) -n istio-system
+kubectl apply -f <(istioctl kube-inject -f Pointdeployment.yml) -n tutorial
+kubectl apply -f <(istioctl kube-inject -f Checkindeployment.yml) -n tutorial
+kubectl apply -f <(istioctl kube-inject -f Customercenterdeployment.yml) -n tutorial
+kubectl apply -f <(istioctl kube-inject -f Gatewaydeployment.yml) -n tutorial
