@@ -1,0 +1,20 @@
+	
+Micro service 의 pom.xml  파일에 기존에 h2 DB로 되어 있는 디펜던시 부분을
+
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+
+아래 hsqldb 내용으로 바꿔 주면 됩니다.. 해당 MS를 빌드배포 한 후에 데이터가 잘 조회되면 성공입니다..
+    
+    
+    <dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.4.0</version>
+			<scope>runtime</scope>
+		</dependency>
