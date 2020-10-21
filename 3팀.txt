@@ -1,5 +1,0 @@
-
-(대소문자 구분)
-User ID : Skccuser03
-Password : Skcc@123
-Console login link : https://kttestpyj.signin.aws.amazon.com/console
